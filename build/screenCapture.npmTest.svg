@@ -1,0 +1,168 @@
+<svg height="2638" width="720" xmlns="http://www.w3.org/2000/svg">
+<rect height="2638" fill="#555" width="720"></rect>
+<text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
+<tspan x="10" y="26"></tspan>
+<tspan x="10" y="42">&gt; npmdoc-pdf2json@0.0.1 test /home/travis/build/npmdoc/node-npmdoc-pdf2json</tspan>
+<tspan x="10" y="58">&gt; (set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)</tspan>
+<tspan x="10" y="74"></tspan>
+<tspan x="10" y="90"></tspan>
+<tspan x="10" y="106">[MODE_BUILD=npmTest] - 2017-04-07T09:04:03Z - npm-testing /home/travis/build/npmdoc/node-npmdoc-\</tspan>
+<tspan x="10" y="122">pdf2json</tspan>
+<tspan x="10" y="138"></tspan>
+<tspan x="10" y="154"></tspan>
+<tspan x="10" y="170">covering $ /home/travis/.nvm/versions/node/v6.10.2/bin/node /home/travis/build/npmdoc/node-npmdo\</tspan>
+<tspan x="10" y="186">c-pdf2json/test.js</tspan>
+<tspan x="10" y="202">merging file:///home/travis/build/npmdoc/node-npmdoc-pdf2json/tmp/build/test-report.json to test\</tspan>
+<tspan x="10" y="218">-report</tspan>
+<tspan x="10" y="234">&gt; server listening on http-port 58752</tspan>
+<tspan x="10" y="250"></tspan>
+<tspan x="10" y="266">pdf2json@1.1.7 [https://github.com/modesty/pdf2json]</tspan>
+<tspan x="10" y="282"></tspan>
+<tspan x="10" y="298">Usage: ../../../.nvm/versions/node/v6.10.2/bin/node ./test.js -f|--file [-o|output_dir]</tspan>
+<tspan x="10" y="314"></tspan>
+<tspan x="10" y="330">Options:</tspan>
+<tspan x="10" y="346">  -v, --version     Display version.</tspan>
+<tspan x="10" y="362">                                                                                                \</tspan>
+<tspan x="10" y="378">                                                                            </tspan>
+<tspan x="10" y="394">  -h, --help        Display brief help information.</tspan>
+<tspan x="10" y="410">                                                                                                \</tspan>
+<tspan x="10" y="426">                                                             </tspan>
+<tspan x="10" y="442">  -f, --file        (required) Full path of input PDF file or a directory to scan for all PDF fi\</tspan>
+<tspan x="10" y="458">les. When specifying a PDF file name, it must end with .PDF, otherwise it would be treated as a \</tspan>
+<tspan x="10" y="474">input directory.</tspan>
+<tspan x="10" y="490"></tspan>
+<tspan x="10" y="506">  -o, --output_dir  (optional) Full path of output directory, must already exist. Current JSON f\</tspan>
+<tspan x="10" y="522">ile in the output folder will be replaced when file name is same.</tspan>
+<tspan x="10" y="538">                                               </tspan>
+<tspan x="10" y="554">  -s, --silent      (optional) when specified, will only log errors, otherwise verbose.</tspan>
+<tspan x="10" y="570">                                                                                                \</tspan>
+<tspan x="10" y="586">                         </tspan>
+<tspan x="10" y="602">  -t, --fieldTypes  (optional) when specified, will generate .fields.json that includes fields i\</tspan>
+<tspan x="10" y="618">ds and types.</tspan>
+<tspan x="10" y="634">                                                                                                \</tspan>
+<tspan x="10" y="650">   </tspan>
+<tspan x="10" y="666">  -c, --content     (optional) when specified, will generate .content.txt that includes text con\</tspan>
+<tspan x="10" y="682">tent from PDF.</tspan>
+<tspan x="10" y="698">                                                                                                \</tspan>
+<tspan x="10" y="714">  </tspan>
+<tspan x="10" y="730">  -m, --merge       (optional) when specified, will generate .merged.json that includes auto-mer\</tspan>
+<tspan x="10" y="746">ged broken text blocks from PDF (Experimental).</tspan>
+<tspan x="10" y="762">                                                                 </tspan>
+<tspan x="10" y="778">  -r, --stream      (optional) when specified, will process and parse with buffer/object transfo\</tspan>
+<tspan x="10" y="794">rm stream rather than file system (Experimental).</tspan>
+<tspan x="10" y="810">                                                               </tspan>
+<tspan x="10" y="826"></tspan>
+<tspan x="10" y="842">-f is required to specify input directory or file.</tspan>
+<tspan x="10" y="858">pdf2json@1.1.7 [https://github.com/modesty/pdf2json]: 1.437ms</tspan>
+<tspan x="10" y="874">created apidoc file:///home/travis/build/npmdoc/node-npmdoc-pdf2json/tmp/build/apidoc.html</tspan>
+<tspan x="10" y="890"></tspan>
+<tspan x="10" y="906"></tspan>
+<tspan x="10" y="922">browserTest - created electron entry-page /home/travis/build/npmdoc/node-npmdoc-pdf2json/tmp/ele\</tspan>
+<tspan x="10" y="938">ctron.15b47a7ff970.f4d296289a2ec.html</tspan>
+<tspan x="10" y="954"></tspan>
+<tspan x="10" y="970">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
+<tspan x="10" y="986">[node test-case 1 of 6 passed] - testCase_buildLib_default</tspan>
+<tspan x="10" y="1002">[node test-case 2 of 6 passed] - testCase_buildReadme_default</tspan>
+<tspan x="10" y="1018">[node test-case 3 of 6 passed] - testCase_buildTest_default</tspan>
+<tspan x="10" y="1034"></tspan>
+<tspan x="10" y="1050">browserTest - created electron entry-page /home/travis/build/npmdoc/node-npmdoc-pdf2json/tmp/ele\</tspan>
+<tspan x="10" y="1066">ctron.15b47a8011f0.d2f4b3b0f7ed8.html</tspan>
+<tspan x="10" y="1082"></tspan>
+<tspan x="10" y="1098">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
+<tspan x="10" y="1114">merging file:///home/travis/build/npmdoc/node-npmdoc-pdf2json/tmp/build/test-report.json to test\</tspan>
+<tspan x="10" y="1130">-report</tspan>
+<tspan x="10" y="1146">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
+<tspan x="10" y="1162">[4898:0407/090404:WARNING:audio_manager.cc(314)] Multiple instances of AudioManager detected</tspan>
+<tspan x="10" y="1178">[4898:0407/090404:WARNING:audio_manager.cc(275)] Multiple instances of AudioManager detected</tspan>
+<tspan x="10" y="1194">[4939:0407/090405:ERROR:sandbox_linux.cc(343)] InitializeSandbox() called with multiple threads \</tspan>
+<tspan x="10" y="1210">in process gpu-process. </tspan>
+<tspan x="10" y="1226">[4898:0407/090405:ERROR:browser_gpu_channel_host_factory.cc(131)] Failed to create channel.</tspan>
+<tspan x="10" y="1242">&gt; server listening on http-port 60574</tspan>
+<tspan x="10" y="1258">merging file:///home/travis/build/npmdoc/node-npmdoc-pdf2json/tmp/build/test-report.json to test\</tspan>
+<tspan x="10" y="1274">-report</tspan>
+<tspan x="10" y="1290">Xlib:  extension "RANDR" missing on display ":99.0".</tspan>
+<tspan x="10" y="1306">[4912:0407/090405:WARNING:audio_manager.cc(314)] Multiple instances of AudioManager detected</tspan>
+<tspan x="10" y="1322">[4912:0407/090405:WARNING:audio_manager.cc(275)] Multiple instances of AudioManager detected</tspan>
+<tspan x="10" y="1338"></tspan>
+<tspan x="10" y="1354">browserTest - opened url /home/travis/build/npmdoc/node-npmdoc-pdf2json/tmp/build/apidoc.html</tspan>
+<tspan x="10" y="1370"></tspan>
+<tspan x="10" y="1386">[4982:0407/090405:ERROR:sandbox_linux.cc(343)] InitializeSandbox() called with multiple threads \</tspan>
+<tspan x="10" y="1402">in process gpu-process. </tspan>
+<tspan x="10" y="1418">[4912:0407/090405:ERROR:browser_gpu_channel_host_factory.cc(131)] Failed to create channel.</tspan>
+<tspan x="10" y="1434"></tspan>
+<tspan x="10" y="1450">browserTest - opened url http://127.0.0.1:58752?modeTest=1</tspan>
+<tspan x="10" y="1466"></tspan>
+<tspan x="10" y="1482">[4912:0407/090407:INFO:CONSOLE(250)] "----------|-----------|-----------|-----------|-----------\</tspan>
+<tspan x="10" y="1498">|</tspan>
+<tspan x="10" y="1514">File      |   % Stmts |% Branches |   % Funcs |   % Lines |</tspan>
+<tspan x="10" y="1530">----------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="1546">----------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="1562">All files |       100 |       100 |       100 |       100 |</tspan>
+<tspan x="10" y="1578">----------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="1594">", source: file:///home/travis/build/npmdoc/node-npmdoc-pdf2json/tmp/electron.15b47a8011f0.d2f4b\</tspan>
+<tspan x="10" y="1610">3b0f7ed8.html (250)</tspan>
+<tspan x="10" y="1626">[4912:0407/090407:INFO:CONSOLE(250)] "created coverage file:///tmp/build/coverage.html/index.htm\</tspan>
+<tspan x="10" y="1642">l", source: file:///home/travis/build/npmdoc/node-npmdoc-pdf2json/tmp/electron.15b47a8011f0.d2f4\</tspan>
+<tspan x="10" y="1658">b3b0f7ed8.html (250)</tspan>
+<tspan x="10" y="1674">[node test-case 4 of 6 passed] - testCase_buildApp_default</tspan>
+<tspan x="10" y="1690"></tspan>
+<tspan x="10" y="1706">browserTest - created screenCapture file:///home/travis/build/npmdoc/node-npmdoc-pdf2json/tmp/bu\</tspan>
+<tspan x="10" y="1722">ild/screenCapture.npmTest.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-pdf2json_2Ftmp\</tspan>
+<tspan x="10" y="1738">_2Fbuild_2Fapidoc.html.png</tspan>
+<tspan x="10" y="1754"></tspan>
+<tspan x="10" y="1770">browserTest - created screenCapture file:///home/travis/build/npmdoc/node-npmdoc-pdf2json/tmp/bu\</tspan>
+<tspan x="10" y="1786">ild/screenCapture.npmTest.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-pdf2json_2Ftmp\</tspan>
+<tspan x="10" y="1802">_2Fbuild_2Fapidoc.html.html</tspan>
+<tspan x="10" y="1818"></tspan>
+<tspan x="10" y="1834">browserTest - exit-code 0 - /home/travis/build/npmdoc/node-npmdoc-pdf2json/tmp/build/apidoc.html</tspan>
+<tspan x="10" y="1850"></tspan>
+<tspan x="10" y="1866">[node test-case 5 of 6 passed] - testCase_buildApidoc_default</tspan>
+<tspan x="10" y="1882"></tspan>
+<tspan x="10" y="1898">browserTest - created screenCapture file:///home/travis/build/npmdoc/node-npmdoc-pdf2json/tmp/bu\</tspan>
+<tspan x="10" y="1914">ild/screenCapture.npmTest.browser..png</tspan>
+<tspan x="10" y="1930"></tspan>
+<tspan x="10" y="1946">browserTest - created screenCapture file:///home/travis/build/npmdoc/node-npmdoc-pdf2json/tmp/bu\</tspan>
+<tspan x="10" y="1962">ild/screenCapture.npmTest.browser..html</tspan>
+<tspan x="10" y="1978"></tspan>
+<tspan x="10" y="1994">browserTest - exit-code 0 - http://127.0.0.1:58752?modeTest=1</tspan>
+<tspan x="10" y="2010"></tspan>
+<tspan x="10" y="2026"></tspan>
+<tspan x="10" y="2042">browserTest - merged coverage from /home/travis/build/npmdoc/node-npmdoc-pdf2json/tmp/coverage.n\</tspan>
+<tspan x="10" y="2058">pmTest.browser.%2F.json</tspan>
+<tspan x="10" y="2074"></tspan>
+<tspan x="10" y="2090"></tspan>
+<tspan x="10" y="2106">browserTest - merging test-report from /home/travis/build/npmdoc/node-npmdoc-pdf2json/tmp/test-r\</tspan>
+<tspan x="10" y="2122">eport.npmTest.browser.%2F.json</tspan>
+<tspan x="10" y="2138"></tspan>
+<tspan x="10" y="2154">[node test-case 6 of 6 passed] - testCase_webpage_default</tspan>
+<tspan x="10" y="2170">-----------------------------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="2186">File                         |   % Stmts |% Branches |   % Funcs |   % Lines |</tspan>
+<tspan x="10" y="2202">-----------------------------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="2218">   node-npmdoc-pdf2json/     |       100 |       100 |       100 |       100 |</tspan>
+<tspan x="10" y="2234">      example.js             |       100 |       100 |       100 |       100 |</tspan>
+<tspan x="10" y="2250">      lib.npmdoc_pdf2json.js |       100 |       100 |       100 |       100 |</tspan>
+<tspan x="10" y="2266">      test.js                |       100 |       100 |       100 |       100 |</tspan>
+<tspan x="10" y="2282">-----------------------------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="2298">All files                    |       100 |       100 |       100 |       100 |</tspan>
+<tspan x="10" y="2314">-----------------------------|-----------|-----------|-----------|-----------|</tspan>
+<tspan x="10" y="2330"></tspan>
+<tspan x="10" y="2346">created coverage file:///home/travis/build/npmdoc/node-npmdoc-pdf2json/tmp/build/coverage.html/i\</tspan>
+<tspan x="10" y="2362">ndex.html</tspan>
+<tspan x="10" y="2378">merging file:///home/travis/build/npmdoc/node-npmdoc-pdf2json/tmp/build/test-report.json to test\</tspan>
+<tspan x="10" y="2394">-report</tspan>
+<tspan x="10" y="2410"></tspan>
+<tspan x="10" y="2426">-------------------------------------------------------</tspan>
+<tspan x="10" y="2442">| test-report - buildNpmdoc - node - linux v6.10.2 - 2017-04-07T09:03:42.076Z</tspan>
+<tspan x="10" y="2458">|   37293 ms            0 failed        6 passed      |</tspan>
+<tspan x="10" y="2474">-------------------------------------------------------</tspan>
+<tspan x="10" y="2490"></tspan>
+<tspan x="10" y="2506">created test-report file:///home/travis/build/npmdoc/node-npmdoc-pdf2json/tmp/build/test-report.\</tspan>
+<tspan x="10" y="2522">html</tspan>
+<tspan x="10" y="2538"></tspan>
+<tspan x="10" y="2554"></tspan>
+<tspan x="10" y="2570">npmTest - 0 failed tests</tspan>
+<tspan x="10" y="2586"></tspan>
+<tspan x="10" y="2602"></tspan>
+<tspan x="10" y="2618">[MODE_BUILD=npmTest] - 2017-04-07T09:04:22Z - EXIT_CODE - 0</tspan>
+</text>
+</svg>
