@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"pdf2json",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "pdf2json",
+    "description": "api documentation for [pdf2json (v1.1.7)](https://github.com/modesty/pdf2json) [![npm package](https://img.shields.io/npm/v/npmdoc-pdf2json.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-pdf2json) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-pdf2json.svg)](https://travis-ci.org/npmdoc/node-npmdoc-pdf2json)",
     "devDependencies": {
-        "pdf2json": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "pdf2json": "*",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-pdf2json",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-pdf2json",
+    "keywords": [
+        "documentation",
+        "pdf2json"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_pdf2json.js",
+    "name": "npmdoc-pdf2json",
+    "nameAlias": "npmdoc_pdf2json",
+    "nameOriginal": "npmdoc-pdf2json",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-pdf2json"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
