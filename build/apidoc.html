@@ -63,6 +63,15 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.pdf2json.pdf2json">
+            function <span class="apidocSignatureSpan"></span>pdf2json
+            <span class="apidocSignatureSpan">(context, needRawText)</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <a class="apidocElementLiA" href="#apidoc.element.pdf2json.p2jcmd">
             function <span class="apidocSignatureSpan">pdf2json.</span>p2jcmd
             <span class="apidocSignatureSpan">()</span>
@@ -126,9 +135,27 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.pdf2json.pdfimage">
+            function <span class="apidocSignatureSpan">pdf2json.</span>pdfimage
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <a class="apidocElementLiA" href="#apidoc.element.pdf2json.pdfline">
             function <span class="apidocSignatureSpan">pdf2json.</span>pdfline
             <span class="apidocSignatureSpan">(x1, y1, x2, y2, lineWidth, color, dashed)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdf2json.pdfparser">
+            function <span class="apidocSignatureSpan">pdf2json.</span>pdfparser
+            <span class="apidocSignatureSpan">(context, needRawText)</span>
             </a>
 
         </li>
@@ -156,6 +183,15 @@
             <a class="apidocElementLiA" href="#apidoc.element.pdf2json.super_">
             function <span class="apidocSignatureSpan">pdf2json.</span>super_
             <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdf2json.toString">
+            function <span class="apidocSignatureSpan">pdf2json.</span>toString
+            <span class="apidocSignatureSpan">()</span>
             </a>
 
         </li>
@@ -983,6 +1019,19 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.pdf2json.pdfimage">module pdf2json.pdfimage</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdf2json.pdfimage.pdfimage">
+            function <span class="apidocSignatureSpan">pdf2json.</span>pdfimage
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
     <li class="apidocModuleLi"><a href="#apidoc.module.pdf2json.pdfline">module pdf2json.pdfline</a><ol>
 
         <li>
@@ -1147,10 +1196,57 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.pdf2json.toString">module pdf2json.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdf2json.toString.toString">
+            function <span class="apidocSignatureSpan">pdf2json.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.pdf2json" id="apidoc.module.pdf2json">module pdf2json</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pdf2json.pdf2json" id="apidoc.element.pdf2json.pdf2json">
+        function <span class="apidocSignatureSpan"></span>pdf2json
+        <span class="apidocSignatureSpan">(context, needRawText)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PdfParser(context, needRawText) {
+		//call constructor for super class
+	    stream.Transform.call(this, {objectMode: true, bufferSize: 64 * 1024});
+	
+        // private
+        let _id = _nextId++;
+
+        // public (every instance will have their own copy of these methods, needs to be lightweight)
+        this.get_id = () =&#x3e; _id;
+        this.get_name = () =&#x3e; _name + _id;
+
+        // service context object, only used in Web Service project; null in command line
+        this.context = context;
+
+        this.pdfFilePath = null; //current PDF file to load and parse, null means loading/parsing not started
+        this.data = null; //if file read success, data is PDF content; if failed, data is &#x22;err&#x22; object
+        this.PDFJS = new PDFJS(needRawText);
+        this.processFieldInfoXML = false;//disable additional _fieldInfo.xml parsing and merging
+
+	    this.chunks = [];
+	    this.flushCallback = null;
+	}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 
     <h2>
@@ -1409,6 +1505,52 @@ reset the flag for now
 
 
     <h2>
+        <a href="#apidoc.element.pdf2json.pdfimage" id="apidoc.element.pdf2json.pdfimage">
+        function <span class="apidocSignatureSpan">pdf2json.</span>pdfimage
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pdfimage = function () {
+	&#x27;use strict&#x27;;
+
+	let _src = &#x27;&#x27;;
+	let _onload = null;
+
+	this.__defineSetter__(&#x22;onload&#x22;, function(val) {
+		_onload = val;
+	});
+
+	this.__defineGetter__(&#x22;onload&#x22;, function() {
+		return _onload;
+	});
+
+	this.__defineSetter__(&#x22;src&#x22;, function(val) {
+		_src = val;
+		if (_onload) _onload();
+	});
+
+	this.__defineGetter__(&#x22;src&#x22;, function() {
+		return _src;
+	});
+
+    this.btoa = function(val) {
+        if (typeof window === &#x27;undefined&#x27;) {
+            return (new Buffer(val, &#x27;ascii&#x27;)).toString(&#x27;base64&#x27;);
+        }
+        else if (typeof window.btoa === &#x27;function&#x27;)
+            return window.btoa(val);
+
+        return &#x22;&#x22;;
+    };
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
         <a href="#apidoc.element.pdf2json.pdfline" id="apidoc.element.pdf2json.pdfline">
         function <span class="apidocSignatureSpan">pdf2json.</span>pdfline
         <span class="apidocSignatureSpan">(x1, y1, x2, y2, lineWidth, color, dashed)</span>
@@ -1431,6 +1573,40 @@ reset the flag for now
     this.color = color;
     this.dashed = dashed;
 }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdf2json.pdfparser" id="apidoc.element.pdf2json.pdfparser">
+        function <span class="apidocSignatureSpan">pdf2json.</span>pdfparser
+        <span class="apidocSignatureSpan">(context, needRawText)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PdfParser(context, needRawText) {
+		//call constructor for super class
+	    stream.Transform.call(this, {objectMode: true, bufferSize: 64 * 1024});
+	
+        // private
+        let _id = _nextId++;
+
+        // public (every instance will have their own copy of these methods, needs to be lightweight)
+        this.get_id = () =&#x3e; _id;
+        this.get_name = () =&#x3e; _name + _id;
+
+        // service context object, only used in Web Service project; null in command line
+        this.context = context;
+
+        this.pdfFilePath = null; //current PDF file to load and parse, null means loading/parsing not started
+        this.data = null; //if file read success, data is PDF content; if failed, data is &#x22;err&#x22; object
+        this.PDFJS = new PDFJS(needRawText);
+        this.processFieldInfoXML = false;//disable additional _fieldInfo.xml parsing and merging
+
+	    this.chunks = [];
+	    this.flushCallback = null;
+	}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -1514,6 +1690,37 @@ reset the flag for now
   });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdf2json.toString" id="apidoc.element.pdf2json.toString">
+        function <span class="apidocSignatureSpan">pdf2json.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+let abs = m.abs;
+let sqrt = m.sqrt;
+
+// precompute &#x22;00&#x22; to &#x22;FF&#x22;
+let dec2hex = [];
+for (let i = 0; i &#x3c; 16; i++) {
+    for (let j = 0; j &#x3c; 16; j++) {
+        dec2hex[i * 16 + j] = i.<span class="apidocCodeKeywordSpan">toString</span>(16) + j.toString(16);
+    }
+}
+
+function createMatrixIdentity() {
+    return [
+        [1, 0, 0],
+        [0, 1, 0],
+...</pre></li>
     </ul>
 
 
@@ -4262,6 +4469,57 @@ contextPrototype.strokeText = function(text, x, y, maxWidth) {
 </div>
 
 <div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pdf2json.pdfimage" id="apidoc.module.pdf2json.pdfimage">module pdf2json.pdfimage</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pdf2json.pdfimage.pdfimage" id="apidoc.element.pdf2json.pdfimage.pdfimage">
+        function <span class="apidocSignatureSpan">pdf2json.</span>pdfimage
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pdfimage = function () {
+	&#x27;use strict&#x27;;
+
+	let _src = &#x27;&#x27;;
+	let _onload = null;
+
+	this.__defineSetter__(&#x22;onload&#x22;, function(val) {
+		_onload = val;
+	});
+
+	this.__defineGetter__(&#x22;onload&#x22;, function() {
+		return _onload;
+	});
+
+	this.__defineSetter__(&#x22;src&#x22;, function(val) {
+		_src = val;
+		if (_onload) _onload();
+	});
+
+	this.__defineGetter__(&#x22;src&#x22;, function() {
+		return _src;
+	});
+
+    this.btoa = function(val) {
+        if (typeof window === &#x27;undefined&#x27;) {
+            return (new Buffer(val, &#x27;ascii&#x27;)).toString(&#x27;base64&#x27;);
+        }
+        else if (typeof window.btoa === &#x27;function&#x27;)
+            return window.btoa(val);
+
+        return &#x22;&#x22;;
+    };
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.pdf2json.pdfline" id="apidoc.module.pdf2json.pdfline">module pdf2json.pdfline</a></h1>
 
 
@@ -4765,6 +5023,40 @@ this.ptiParser.<span class="apidocCodeKeywordSpan">parseXml</span>(fieldInfoXMLP
     else {
         nodeUtil.p2jinfo(&#x22;fieldInfo XML loaded.&#x22;);
     }
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pdf2json.toString" id="apidoc.module.pdf2json.toString">module pdf2json.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pdf2json.toString.toString" id="apidoc.element.pdf2json.toString.toString">
+        function <span class="apidocSignatureSpan">pdf2json.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+let abs = m.abs;
+let sqrt = m.sqrt;
+
+// precompute &#x22;00&#x22; to &#x22;FF&#x22;
+let dec2hex = [];
+for (let i = 0; i &#x3c; 16; i++) {
+    for (let j = 0; j &#x3c; 16; j++) {
+        dec2hex[i * 16 + j] = i.<span class="apidocCodeKeywordSpan">toString</span>(16) + j.toString(16);
+    }
+}
+
+function createMatrixIdentity() {
+    return [
+        [1, 0, 0],
+        [0, 1, 0],
 ...</pre></li>
     </ul>
 
