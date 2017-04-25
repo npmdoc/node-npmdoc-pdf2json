@@ -1,4 +1,7 @@
-# api documentation for  [pdf2json (v1.1.7)](https://github.com/modesty/pdf2json)  [![npm package](https://img.shields.io/npm/v/npmdoc-pdf2json.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-pdf2json) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-pdf2json.svg)](https://travis-ci.org/npmdoc/node-npmdoc-pdf2json)
+# npmdoc-pdf2json
+
+#### basic api documentation for  [pdf2json (v1.1.7)](https://github.com/modesty/pdf2json)  [![npm package](https://img.shields.io/npm/v/npmdoc-pdf2json.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-pdf2json) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-pdf2json.svg)](https://travis-ci.org/npmdoc/node-npmdoc-pdf2json)
+
 #### A PDF file parser that converts PDF binaries to text based JSON, powered by porting a fork of PDF.JS to Node.js
 
 [![NPM](https://nodei.co/npm/pdf2json.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/pdf2json)
