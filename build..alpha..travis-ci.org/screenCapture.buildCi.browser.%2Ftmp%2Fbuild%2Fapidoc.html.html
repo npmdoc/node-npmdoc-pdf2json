@@ -128,27 +128,9 @@
 
         <li>
 
-            <a class="apidocElementLiA" href="#apidoc.element.pdf2json.pdfimage">
-            function <span class="apidocSignatureSpan">pdf2json.</span>pdfimage
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
-        <li>
-
             <a class="apidocElementLiA" href="#apidoc.element.pdf2json.pdfline">
             function <span class="apidocSignatureSpan">pdf2json.</span>pdfline
             <span class="apidocSignatureSpan">(x1, y1, x2, y2, lineWidth, color, dashed)</span>
-            </a>
-
-        </li>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.pdf2json.pdfparser">
-            function <span class="apidocSignatureSpan">pdf2json.</span>pdfparser
-            <span class="apidocSignatureSpan">(context, needRawText)</span>
             </a>
 
         </li>
@@ -176,15 +158,6 @@
             <a class="apidocElementLiA" href="#apidoc.element.pdf2json.super_">
             function <span class="apidocSignatureSpan">pdf2json.</span>super_
             <span class="apidocSignatureSpan">(options)</span>
-            </a>
-
-        </li>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.pdf2json.toString">
-            function <span class="apidocSignatureSpan">pdf2json.</span>toString
-            <span class="apidocSignatureSpan">()</span>
             </a>
 
         </li>
@@ -1012,19 +985,6 @@
 
     </ol></li>
 
-    <li class="apidocModuleLi"><a href="#apidoc.module.pdf2json.pdfimage">module pdf2json.pdfimage</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.pdf2json.pdfimage.pdfimage">
-            function <span class="apidocSignatureSpan">pdf2json.</span>pdfimage
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
     <li class="apidocModuleLi"><a href="#apidoc.module.pdf2json.pdfline">module pdf2json.pdfline</a><ol>
 
         <li>
@@ -1183,19 +1143,6 @@
             <a class="apidocElementLiA" href="#apidoc.element.pdf2json.ptixmlinject.prototype.parseXml">
             function <span class="apidocSignatureSpan">pdf2json.ptixmlinject.prototype.</span>parseXml
             <span class="apidocSignatureSpan">(filePath, callback)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.pdf2json.toString">module pdf2json.toString</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.pdf2json.toString.toString">
-            function <span class="apidocSignatureSpan">pdf2json.</span>toString
-            <span class="apidocSignatureSpan">()</span>
             </a>
 
         </li>
@@ -1498,52 +1445,6 @@ reset the flag for now
 
 
     <h2>
-        <a href="#apidoc.element.pdf2json.pdfimage" id="apidoc.element.pdf2json.pdfimage">
-        function <span class="apidocSignatureSpan">pdf2json.</span>pdfimage
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">pdfimage = function () {
-	'use strict';
-
-	let _src = '';
-	let _onload = null;
-
-	this.__defineSetter__("onload", function(val) {
-		_onload = val;
-	});
-
-	this.__defineGetter__("onload", function() {
-		return _onload;
-	});
-
-	this.__defineSetter__("src", function(val) {
-		_src = val;
-		if (_onload) _onload();
-	});
-
-	this.__defineGetter__("src", function() {
-		return _src;
-	});
-
-    this.btoa = function(val) {
-        if (typeof window === 'undefined') {
-            return (new Buffer(val, 'ascii')).toString('base64');
-        }
-        else if (typeof window.btoa === 'function')
-            return window.btoa(val);
-
-        return "";
-    };
-
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-
-    <h2>
         <a href="#apidoc.element.pdf2json.pdfline" id="apidoc.element.pdf2json.pdfline">
         function <span class="apidocSignatureSpan">pdf2json.</span>pdfline
         <span class="apidocSignatureSpan">(x1, y1, x2, y2, lineWidth, color, dashed)</span>
@@ -1566,40 +1467,6 @@ reset the flag for now
     this.color = color;
     this.dashed = dashed;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.pdf2json.pdfparser" id="apidoc.element.pdf2json.pdfparser">
-        function <span class="apidocSignatureSpan">pdf2json.</span>pdfparser
-        <span class="apidocSignatureSpan">(context, needRawText)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">function PdfParser(context, needRawText) {
-		//call constructor for super class
-	    stream.Transform.call(this, {objectMode: true, bufferSize: 64 * 1024});
-	
-        // private
-        let _id = _nextId++;
-
-        // public (every instance will have their own copy of these methods, needs to be lightweight)
-        this.get_id = () =&gt; _id;
-        this.get_name = () =&gt; _name + _id;
-
-        // service context object, only used in Web Service project; null in command line
-        this.context = context;
-
-        this.pdfFilePath = null; //current PDF file to load and parse, null means loading/parsing not started
-        this.data = null; //if file read success, data is PDF content; if failed, data is "err" object
-        this.PDFJS = new PDFJS(needRawText);
-        this.processFieldInfoXML = false;//disable additional _fieldInfo.xml parsing and merging
-
-	    this.chunks = [];
-	    this.flushCallback = null;
-	}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -1683,37 +1550,6 @@ reset the flag for now
   });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.pdf2json.toString" id="apidoc.element.pdf2json.toString">
-        function <span class="apidocSignatureSpan">pdf2json.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">toString = function () {
-    return text;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-let abs = m.abs;
-let sqrt = m.sqrt;
-
-// precompute "00" to "FF"
-let dec2hex = [];
-for (let i = 0; i &lt; 16; i++) {
-    for (let j = 0; j &lt; 16; j++) {
-        dec2hex[i * 16 + j] = i.<span class="apidocCodeKeywordSpan">toString</span>(16) + j.toString(16);
-    }
-}
-
-function createMatrixIdentity() {
-    return [
-        [1, 0, 0],
-        [0, 1, 0],
-...</pre></li>
     </ul>
 
 
@@ -2105,21 +1941,20 @@ new P2JCMD().<span class="apidocCodeKeywordSpan">start</span>();
     this.rawTextContents = null;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    this.inputDir = null;
-    this.inputFile = null;
-    this.inputPath = null;
-    this.outputDir = null;
-    this.outputPath = null;
+	PdfParser.prototype.getMergedTextBlocksStream = function() { return _createContentStream(this.getMergedTextBlocksIfNeeded()); };
 
-    if (this.pdfParser) {
-        this.pdfParser.<span class="apidocCodeKeywordSpan">destroy</span>();
-    }
-    this.pdfParser = null;
-    this.curProcessor = null;
-};
+	PdfParser.prototype.destroy = function() {
+		this.removeAllListeners();
 
-cls.prototype.processFile = function(callback) {
-    let validateMsg = this.validateParams();
+		//context object will be set in Web Service project, but not in command line utility
+		if (this.context) {
+			this.context.<span class="apidocCodeKeywordSpan">destroy</span>();
+			this.context = null;
+		}
+
+		this.pdfFilePath = null;
+		this.data = null;
+		this.chunks = null;
 ...</pre></li>
     </ul>
 
@@ -2136,21 +1971,22 @@ cls.prototype.processFile = function(callback) {
 		return PDFField.getAllFieldsTypes({Pages:this.pages || [], Width: this.pageWidth});
 	}</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    let fs = require('fs'),
-        PDFParser = require("pdf2json");
+	PdfParser.prototype.parseBuffer = function(pdfBuffer) {
+		_startParsingPDF.call(this, pdfBuffer);
+	};
 
-    let pdfParser = new PDFParser();
+	PdfParser.prototype.getRawTextContent = function() { return this.PDFJS.getRawTextContent(); };
+	PdfParser.prototype.getRawTextContentStream = function() { return _createContentStream(this.getRawTextContent()); };
 
-    pdfParser.on("pdfParser_dataError", errData =&gt; console.error(errData.parserError) );
-    pdfParser.on("pdfParser_dataReady", pdfData =&gt; {
-        fs.writeFile("./pdf2json/test/F1040EZ.fields.json", JSON.stringify(pdfParser.<span class="apidocCodeKeywordSpan
-">getAllFieldsTypes</span>()));
-    });
+	PdfParser.prototype.getAllFieldsTypes = function() { return this.PDFJS.<span class="apidocCodeKeywordSpan">getAllFieldsTypes</span>(); };
+	PdfParser.prototype.getAllFieldsTypesStream = function() { return _createContentStream(this.getAllFieldsTypes()); };
 
-    pdfParser.loadPDF("./pdf2json/test/pdf/fd/form/F1040EZ.pdf");
-````
+	PdfParser.prototype.getMergedTextBlocksIfNeeded = function() { return {"formImage": this.PDFJS.getMergedTextBlocksIfNeeded
+()}; };
+	PdfParser.prototype.getMergedTextBlocksStream = function() { return _createContentStream(this.getMergedTextBlocksIfNeeded()); };
 
-Alternatively, you can pipe input and output streams: (requires v1.1.4)
+	PdfParser.prototype.destroy = function() {
+		this.removeAllListeners();
 ...</pre></li>
     </ul>
 
@@ -2207,7 +2043,24 @@ Alternatively, you can pipe input and output streams: (requires v1.1.4)
 
 		return {Pages:this.pages, Width: this.pageWidth};
 	}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+	PdfParser.prototype.getRawTextContent = function() { return this.PDFJS.getRawTextContent(); };
+	PdfParser.prototype.getRawTextContentStream = function() { return _createContentStream(this.getRawTextContent()); };
+
+	PdfParser.prototype.getAllFieldsTypes = function() { return this.PDFJS.getAllFieldsTypes(); };
+	PdfParser.prototype.getAllFieldsTypesStream = function() { return _createContentStream(this.getAllFieldsTypes()); };
+
+	PdfParser.prototype.getMergedTextBlocksIfNeeded = function() { return {"formImage": this.PDFJS.<span class="apidocCodeKeywordSpan
+">getMergedTextBlocksIfNeeded</span>()}; };
+	PdfParser.prototype.getMergedTextBlocksStream = function() { return _createContentStream(this.getMergedTextBlocksIfNeeded()); };
+
+	PdfParser.prototype.destroy = function() {
+		this.removeAllListeners();
+
+		//context object will be set in Web Service project, but not in command line utility
+		if (this.context) {
+...</pre></li>
     </ul>
 
 
@@ -2250,21 +2103,22 @@ Alternatively, you can pipe input and output streams: (requires v1.1.4)
     return retVal;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    let fs = require('fs'),
-        PDFParser = require("pdf2json");
+	};
 
-    let pdfParser = new PDFParser(this,1);
+	// Introduce a way to directly process buffers without the need to write it to a temporary file
+	PdfParser.prototype.parseBuffer = function(pdfBuffer) {
+		_startParsingPDF.call(this, pdfBuffer);
+	};
 
-    pdfParser.on("pdfParser_dataError", errData =&gt; console.error(errData.parserError) );
-    pdfParser.on("pdfParser_dataReady", pdfData =&gt; {
-        fs.writeFile("./pdf2json/test/F1040EZ.content.txt", pdfParser.<span class="apidocCodeKeywordSpan">getRawTextContent
-</span>());
-    });
+	PdfParser.prototype.getRawTextContent = function() { return this.PDFJS.<span class="apidocCodeKeywordSpan">getRawTextContent</span>(); };
+	PdfParser.prototype.getRawTextContentStream = function() { return _createContentStream(this.getRawTextContent()); };
 
-    pdfParser.loadPDF("./pdf2json/test/pdf/fd/form/F1040EZ.pdf");
-````
+	PdfParser.prototype.getAllFieldsTypes = function() { return this.PDFJS.getAllFieldsTypes(); };
+	PdfParser.prototype.getAllFieldsTypesStream = function() { return _createContentStream(this.getAllFieldsTypes()); };
 
-* Parse a PDF then write a fields.json file that only contains interactive forms' fields information:
+	PdfParser.prototype.getMergedTextBlocksIfNeeded = function() { return {"formImage": this.PDFJS.getMergedTextBlocksIfNeeded
+()}; };
+	PdfParser.prototype.getMergedTextBlocksStream = function() { return _createContentStream(this.getMergedTextBlocksIfNeeded()); };
 ...</pre></li>
     </ul>
 
@@ -2456,7 +2310,23 @@ cls.prototype.parseMetaData = function() {
         error =&gt; this.raiseErrorEvent("An error occurred while parsing the PDF: " + error)
     );
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+	let _startParsingPDF = function(buffer) {
+		this.data = {};
+
+		this.PDFJS.on("pdfjs_parseDataReady", _onPDFJSParseDataReady.bind(this));
+		this.PDFJS.on("pdfjs_parseDataError", _onPDFJSParserDataError.bind(this));
+
+		this.PDFJS.<span class="apidocCodeKeywordSpan">parsePDFData</span>(buffer || _binBuffer[this.pdfFilePath]);
+	};
+
+	let _processBinaryCache = function() {
+		if (_.has(_binBuffer, this.pdfFilePath)) {
+			_startParsingPDF.call(this);
+			return true;
+		}
+...</pre></li>
     </ul>
 
 
@@ -2634,7 +2504,23 @@ cls.prototype.tryLoadFieldInfoXML = function(pdfFilePath) {
         }
     });
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+	PdfParser.prototype.loadPDF = function(pdfFilePath, verbosity) {
+		this.setVerbosity(verbosity);
+		nodeUtil.p2jinfo("about to load PDF file " + pdfFilePath);
+
+		this.pdfFilePath = pdfFilePath;
+		if (this.processFieldInfoXML) {
+			this.PDFJS.<span class="apidocCodeKeywordSpan">tryLoadFieldInfoXML</span>(pdfFilePath);
+		}
+
+		if (_processBinaryCache.call(this))
+			return;
+
+		this.fq.push({path: pdfFilePath}, _processPDFContent.bind(this));
+	};
+...</pre></li>
     </ul>
 
 
@@ -2694,7 +2580,24 @@ cls.prototype.tryLoadFieldInfoXML = function(pdfFilePath) {
         setupFieldAttributes(annotation, item);
     }
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+//END:MQZ. Sep.19.2012. comment out the fullname routin, replace it with getInheritableProperty('T') //PDF Spec P.689
+//It matches a sequence of at least one period or space, which is then replaced by a single underscore
+    var itemNameStr = stringToPDFString(Util.getInheritableProperty(dict, 'T') || '');
+    itemNameStr = itemNameStr.replace(/[.\s\W]+/g, '_'); //replace spaces and non-word character (not [^a-zA-Z0-9_]) with
+ _
+    data.fullName = itemNameStr.replace(/^[\s_,:.;\/\\]+/, ''); //replace starting punctuation
+
+    PDFAnno.<span class="apidocCodeKeywordSpan">processAnnotation</span>(dict, data);
+}
+
+var parent = Annotation.prototype;
+Util.inherit(WidgetAnnotation, Annotation, {
+  isViewable: function WidgetAnnotation_isViewable() {
+    if (this.data.fieldType === 'Sig') {
+      TODO('unimplemented annotation type: Widget signature');
+...</pre></li>
     </ul>
 
 
@@ -2905,7 +2808,24 @@ this.stroke();
     let cp2 = this.getCoords_(aCP2x, aCP2y);
     bezierCurveTo(this, cp1, cp2, p);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+function moveTo(x, y) {
+  js.push('c.moveTo(' + x + ',' + y + ');');
+}
+function lineTo(x, y) {
+  js.push('c.lineTo(' + x + ',' + y + ');');
+}
+function bezierCurveTo(x1, y1, x2, y2, x, y) {
+  js.push('c.<span class="apidocCodeKeywordSpan">bezierCurveTo</span>(' + x1 + ',' + y1 + ',' + x2
+ + ',' + y2 + ',' +
+                               x + ',' + y + ');');
+}
+
+function parse(code) {
+  var i = 0;
+  while (i &lt; code.length) {
+    var stackClean = false;
+...</pre></li>
     </ul>
 
 
@@ -2919,7 +2839,23 @@ this.stroke();
     <ul>
     <li>description and source-code<pre class="apidocCodePre">clearRect = function () {
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// blend modes can look wrong since we'd be blending with a white
+// backdrop. The problem with a transparent backdrop though is we then
+// don't get sub pixel anti aliasing on text, so we fill with white if
+// we can.
+var width = this.ctx.canvas.width;
+var height = this.ctx.canvas.height;
+if (transparency) {
+  this.ctx.<span class="apidocCodeKeywordSpan">clearRect</span>(0, 0, width, height);
+} else {
+  this.ctx.mozOpaque = true;
+  this.ctx.save();
+  this.ctx.fillStyle = 'rgb(255, 255, 255)';
+  this.ctx.fillRect(0, 0, width, height);
+  this.ctx.restore();
+}
+...</pre></li>
     </ul>
 
 
@@ -2934,7 +2870,23 @@ this.stroke();
     <li>description and source-code<pre class="apidocCodePre">clip = function () {
     // TODO: Implement
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  for (var i = 0; i &lt; paths.length; i++) {
+    var path = paths[i];
+    ctx.setTransform.apply(ctx, path.transform);
+    ctx.translate(path.x, path.y);
+    path.addToPath(ctx, path.fontSize);
+  }
+  ctx.restore();
+  ctx.<span class="apidocCodeKeywordSpan">clip</span>();
+  ctx.beginPath();
+  delete this.pendingTextPaths;
+},
+setCharSpacing: function CanvasGraphics_setCharSpacing(spacing) {
+  this.current.charSpacing = spacing;
+},
+setWordSpacing: function CanvasGraphics_setWordSpacing(spacing) {
+...</pre></li>
     </ul>
 
 
@@ -2984,7 +2936,23 @@ contextPrototype.strokeRect = function (aX, aY, aWidth, aHeight) {
     gradient.y1_ = aY1;
     return gradient;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    var r0 = raw[5];
+    var r1 = raw[6];
+    return {
+      type: 'Pattern',
+      getPattern: function RadialAxial_getPattern(ctx) {
+var grad;
+if (type == PatternType.AXIAL)
+  grad = ctx.<span class="apidocCodeKeywordSpan">createLinearGradient</span>(p0[0], p0[1], p1[0], p1[1]);
+else if (type == PatternType.RADIAL)
+  grad = ctx.createRadialGradient(p0[0], p0[1], r0, p1[0], p1[1], r1);
+
+for (var i = 0, ii = colorStops.length; i &lt; ii; ++i) {
+  var c = colorStops[i];
+  grad.addColorStop(c[0], c[1]);
+}
+...</pre></li>
     </ul>
 
 
@@ -2999,7 +2967,21 @@ contextPrototype.strokeRect = function (aX, aY, aWidth, aHeight) {
     <li>description and source-code<pre class="apidocCodePre">createPattern = function () {
     return new CanvasPattern_;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      var temporaryPatternCanvas = this.createPatternCanvas(owner);
+
+      var ctx = this.ctx;
+      ctx.setTransform.apply(ctx, this.baseTransform);
+      ctx.transform.apply(ctx, this.matrix);
+      this.scaleToContext();
+
+      return ctx.<span class="apidocCodeKeywordSpan">createPattern</span>(temporaryPatternCanvas, 'repeat');
+    }
+  };
+
+  return TilingPattern;
+})();
+...</pre></li>
     </ul>
 
 
@@ -3021,7 +3003,23 @@ contextPrototype.strokeRect = function (aX, aY, aWidth, aHeight) {
     gradient.r1_ = aR1;
     return gradient;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    return {
+type: 'Pattern',
+getPattern: function RadialAxial_getPattern(ctx) {
+  var grad;
+  if (type == PatternType.AXIAL)
+    grad = ctx.createLinearGradient(p0[0], p0[1], p1[0], p1[1]);
+  else if (type == PatternType.RADIAL)
+    grad = ctx.<span class="apidocCodeKeywordSpan">createRadialGradient</span>(p0[0], p0[1], r0, p1[0], p1[1], r1);
+
+  for (var i = 0, ii = colorStops.length; i &lt; ii; ++i) {
+    var c = colorStops[i];
+    grad.addColorStop(c[0], c[1]);
+  }
+  return grad;
+}
+...</pre></li>
     </ul>
 
 
@@ -3036,7 +3034,23 @@ contextPrototype.strokeRect = function (aX, aY, aWidth, aHeight) {
     <li>description and source-code<pre class="apidocCodePre">drawImage = function (image, var_args) {
     //MQZ. no image drawing support for now
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var width = img.width;
+var height = img.height;
+var size = width * height;
+var rgbaLength = size * 4;
+var buf = new Uint8Array(size * components);
+var tmpCanvas = createScratchCanvas(width, height);
+var tmpCtx = tmpCanvas.getContext('2d');
+tmpCtx.<span class="apidocCodeKeywordSpan">drawImage</span>(img, 0, 0);
+var data = tmpCtx.getImageData(0, 0, width, height).data;
+
+if (components == 3) {
+  for (var i = 0, j = 0; i &lt; rgbaLength; i += 4, j += 3) {
+    buf[j] = data[i];
+    buf[j + 1] = data[i + 1];
+    buf[j + 2] = data[i + 2];
+...</pre></li>
     </ul>
 
 
@@ -3096,7 +3110,23 @@ contextPrototype.createLinearGradient = function (aX0, aY0, aX1, aY1) {
 
     this.currentPath_ = oldPath;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var height = this.ctx.canvas.height;
+if (transparency) {
+  this.ctx.clearRect(0, 0, width, height);
+} else {
+  this.ctx.mozOpaque = true;
+  this.ctx.save();
+  this.ctx.fillStyle = 'rgb(255, 255, 255)';
+  this.ctx.<span class="apidocCodeKeywordSpan">fillRect</span>(0, 0, width, height);
+  this.ctx.restore();
+}
+
+var transform = viewport.transform;
+this.baseTransform = transform.slice();
+this.ctx.save();
+this.ctx.transform.apply(this.ctx, transform);
+...</pre></li>
     </ul>
 
 
@@ -3219,7 +3249,23 @@ contextPrototype.fillText = function(text, x, y, maxWidth, fontSize) {
         data:new Uint8Array(w * h * 4)
     };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var SMALL_IMAGE_DIMENSIONS = 200;
+// Inlining small images into the queue as RGB data
+if (inline &amp;&amp; !softMask &amp;&amp; !mask &amp;&amp;
+    !(image instanceof JpegStream) &amp;&amp;
+    (w + h) &lt; SMALL_IMAGE_DIMENSIONS) {
+  var imageObj = new PDFImage(this.xref, resources, image,
+                              inline, null, null);
+  var imgData = imageObj.<span class="apidocCodeKeywordSpan">getImageData</span>();
+  operatorList.addOp(OPS.paintInlineImageXObject, [imgData]);
+  return;
+}
+
+// If there is no imageMask, create the PDFImage and a lot
+// of image processing can be done here.
+var uniquePrefix = this.uniquePrefix || '';
+...</pre></li>
     </ul>
 
 
@@ -3234,7 +3280,22 @@ contextPrototype.fillText = function(text, x, y, maxWidth, fontSize) {
     <li>description and source-code<pre class="apidocCodePre">getLineDash = function () {
     return this.dashArray;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  for (var i = 0, ii = properties.length; i &lt; ii; i++) {
+    var property = properties[i];
+    if (property in sourceCtx) {
+      destCtx[property] = sourceCtx[property];
+    }
+  }
+  if ('setLineDash' in sourceCtx) {
+    destCtx.setLineDash(sourceCtx.<span class="apidocCodeKeywordSpan">getLineDash</span>());
+    destCtx.lineDashOffset =  sourceCtx.lineDashOffset;
+  } else if ('mozDash' in sourceCtx) {
+    destCtx.mozDash = sourceCtx.mozDash;
+    destCtx.mozDashOffset = sourceCtx.mozDashOffset;
+  }
+}
+...</pre></li>
     </ul>
 
 
@@ -3286,7 +3347,23 @@ contextPrototype.strokeRect = function (aX, aY, aWidth, aHeight) {
     let chars = text.length || 1;
     return {width: chars * (this.currentFont.spaceWidth || 5)};
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+scaledX = x / fontSizeScale;
+scaledY = 0;
+            }
+
+            if (font.remeasure &amp;&amp; width &gt; 0) {
+// some standard fonts may not have the exact width, trying to
+// rescale per character
+var measuredWidth = ctx.<span class="apidocCodeKeywordSpan">measureText</span>(character).width * 1000 /
+  current.fontSize * current.fontSizeScale;
+
+var characterScaleX = width / measuredWidth;
+restoreNeeded = true;
+ctx.save();
+ctx.scale(characterScaleX, 1);
+scaledX /= characterScaleX;
+...</pre></li>
     </ul>
 
 
@@ -3350,7 +3427,23 @@ contextPrototype.strokeRect = function (aX, aY, aWidth, aHeight) {
 
     bezierCurveTo(this, cp1, cp2, p);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+function moveTo(x, y) {
+  js.push('c.moveTo(' + x + ',' + y + ');');
+}
+function lineTo(x, y) {
+  js.push('c.lineTo(' + x + ',' + y + ');');
+}
+function quadraticCurveTo(xa, ya, x, y) {
+  js.push('c.<span class="apidocCodeKeywordSpan">quadraticCurveTo</span>(' + xa + ',' + ya + ',' +
+                               x + ',' + y + ');');
+}
+
+var i = 0;
+var numberOfContours = ((code[i] &lt;&lt; 24) | (code[i + 1] &lt;&lt; 16)) &gt;&gt; 16;
+var xMin = ((code[i + 2] &lt;&lt; 24) | (code[i + 3] &lt;&lt; 16)) &gt;&gt; 16;
+var yMin = ((code[i + 4] &lt;&lt; 24) | (code[i + 5] &lt;&lt; 16)) &gt;&gt; 16;
+...</pre></li>
     </ul>
 
 
@@ -3373,7 +3466,23 @@ contextPrototype.strokeRect = function (aX, aY, aWidth, aHeight) {
     this.lineTo(aX, aY + aHeight);
     this.closePath();
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  this.curveTo(x1, y1, x3, y3, x3, y3);
+  this.current.setCurrentPoint(x3, y3);
+},
+closePath: function CanvasGraphics_closePath() {
+  this.ctx.closePath();
+},
+rectangle: function CanvasGraphics_rectangle(x, y, width, height) {
+  this.ctx.<span class="apidocCodeKeywordSpan">rect</span>(x, y, width, height);
+},
+stroke: function CanvasGraphics_stroke(consumePath) {
+  consumePath = typeof consumePath !== 'undefined' ? consumePath : true;
+  var ctx = this.ctx;
+  var strokeColor = this.current.strokeColor;
+  if (this.current.lineWidth === 0)
+    ctx.lineWidth = this.getSinglePixelWidth();
+...</pre></li>
     </ul>
 
 
@@ -3389,7 +3498,23 @@ contextPrototype.strokeRect = function (aX, aY, aWidth, aHeight) {
     copyState(this.aStack_.pop(), this);
     this.m_ = this.mStack_.pop();
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    }
+    var subglyph = font.glyphs[glyphIndex];
+    if (subglyph) {
+      js.push('c.save();');
+      js.push('c.transform(' + scaleX + ',' + scale01 + ',' +
+              scale10 + ',' + scaleY + ',' + x + ',' + y + ');');
+      compileGlyf(subglyph, js, font);
+      js.push('c.<span class="apidocCodeKeywordSpan">restore</span>();');
+    }
+  } while ((flags &amp; 0x20));
+} else {
+  // simple glyph
+  var endPtsOfContours = [];
+  for (var j = 0; j &lt; numberOfContours; j++) {
+    endPtsOfContours.push((code[i] &lt;&lt; 8) | code[i + 1]);
+...</pre></li>
     </ul>
 
 
@@ -3432,7 +3557,23 @@ contextPrototype.strokeRect = function (aX, aY, aWidth, aHeight) {
     this.mStack_.push(this.m_);
     this.m_ = matrixMultiply(createMatrixIdentity(), this.m_);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      scale01 = ((code[i + 2] &lt;&lt; 24) | (code[i + 3] &lt;&lt; 16)) / 1073741824;
+      scale10 = ((code[i + 4] &lt;&lt; 24) | (code[i + 5] &lt;&lt; 16)) / 1073741824;
+      scaleY = ((code[i + 6] &lt;&lt; 24) | (code[i + 7] &lt;&lt; 16)) / 1073741824;
+      i += 8;
+    }
+    var subglyph = font.glyphs[glyphIndex];
+    if (subglyph) {
+      js.push('c.<span class="apidocCodeKeywordSpan">save</span>();');
+      js.push('c.transform(' + scaleX + ',' + scale01 + ',' +
+              scale10 + ',' + scaleY + ',' + x + ',' + y + ');');
+      compileGlyf(subglyph, js, font);
+      js.push('c.restore();');
+    }
+  } while ((flags &amp; 0x20));
+} else {
+...</pre></li>
     </ul>
 
 
@@ -3455,7 +3596,23 @@ contextPrototype.strokeRect = function (aX, aY, aWidth, aHeight) {
 
     setM(this, matrixMultiply(m1, this.m_), true);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  if (!code || code.length === 0 || code[0] === 14) {
+    return noop;
+  }
+
+  var js = [];
+  js.push('c.save();');
+  js.push('c.transform(' + this.fontMatrix.join(',') + ');');
+  js.push('c.<span class="apidocCodeKeywordSpan">scale</span>(size, -size);');
+
+  this.compileGlyphImpl(code, js);
+
+  js.push('c.restore();');
+
+  return js.join('\n');
+},
+...</pre></li>
     </ul>
 
 
@@ -3475,7 +3632,23 @@ contextPrototype.strokeRect = function (aX, aY, aWidth, aHeight) {
 
     this.currentFont = new PDFFont(fontObj);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+case 'RI':
+  this.setRenderingIntent(value);
+  break;
+case 'FL':
+  this.setFlatness(value);
+  break;
+case 'Font':
+  this.<span class="apidocCodeKeywordSpan">setFont</span>(value[0], value[1]);
+  break;
+case 'CA':
+  this.current.strokeAlpha = state[1];
+  break;
+case 'ca':
+  this.current.fillAlpha = state[1];
+  this.ctx.globalAlpha = state[1];
+...</pre></li>
     </ul>
 
 
@@ -3490,7 +3663,22 @@ contextPrototype.strokeRect = function (aX, aY, aWidth, aHeight) {
     <li>description and source-code<pre class="apidocCodePre">setLineDash = function (lineDash) {
     this.dashArray = lineDash;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  for (var i = 0, ii = properties.length; i &lt; ii; i++) {
+    var property = properties[i];
+    if (property in sourceCtx) {
+      destCtx[property] = sourceCtx[property];
+    }
+  }
+  if ('setLineDash' in sourceCtx) {
+    destCtx.<span class="apidocCodeKeywordSpan">setLineDash</span>(sourceCtx.getLineDash());
+    destCtx.lineDashOffset =  sourceCtx.lineDashOffset;
+  } else if ('mozDash' in sourceCtx) {
+    destCtx.mozDash = sourceCtx.mozDash;
+    destCtx.mozDashOffset = sourceCtx.mozDashOffset;
+  }
+}
+...</pre></li>
     </ul>
 
 
@@ -3511,7 +3699,23 @@ contextPrototype.strokeRect = function (aX, aY, aWidth, aHeight) {
 
     setM(this, m, true);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+                                           trackTransform) {
+var canvasEntry;
+if (id in cache) {
+  canvasEntry = cache[id];
+  canvasEntry.canvas.width = width;
+  canvasEntry.canvas.height = height;
+  // reset canvas transform for emulated mozCurrentTransform, if needed
+  canvasEntry.context.<span class="apidocCodeKeywordSpan">setTransform</span>(1, 0, 0, 1, 0, 0);
+} else {
+  var canvas = createScratchCanvas(width, height);
+  var ctx = canvas.getContext('2d');
+  if (trackTransform) {
+    addContextCurrentTransform(ctx);
+  }
+  cache[id] = canvasEntry = {canvas: canvas, context: ctx};
+...</pre></li>
     </ul>
 
 
@@ -3646,7 +3850,23 @@ contextPrototype.fillRect = function (aX, aY, aWidth, aHeight) {
     //MQZ. 10/23/2012, yeah, no hollow text for now
     this.fillText(text, x, y, maxWidth);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+} else {
+  if (fillStrokeMode === TextRenderingMode.FILL ||
+      fillStrokeMode === TextRenderingMode.FILL_STROKE) {
+    ctx.fillText(character, x, y);
+  }
+  if (fillStrokeMode === TextRenderingMode.STROKE ||
+      fillStrokeMode === TextRenderingMode.FILL_STROKE) {
+    ctx.<span class="apidocCodeKeywordSpan">strokeText</span>(character, x, y);
+  }
+}
+
+if (isAddToPathSet) {
+  var paths = this.pendingTextPaths || (this.pendingTextPaths = []);
+  paths.push({
+    transform: ctx.mozCurrentTransform,
+...</pre></li>
     </ul>
 
 
@@ -3667,7 +3887,24 @@ contextPrototype.fillRect = function (aX, aY, aWidth, aHeight) {
 
     setM(this, matrixMultiply(m1, this.m_), true);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      scale10 = ((code[i + 4] &lt;&lt; 24) | (code[i + 5] &lt;&lt; 16)) / 1073741824;
+      scaleY = ((code[i + 6] &lt;&lt; 24) | (code[i + 7] &lt;&lt; 16)) / 1073741824;
+      i += 8;
+    }
+    var subglyph = font.glyphs[glyphIndex];
+    if (subglyph) {
+      js.push('c.save();');
+      js.push('c.<span class="apidocCodeKeywordSpan">transform</span>(' + scaleX + ',' + scale01 + ',&amp;#
+x27; +
+              scale10 + ',' + scaleY + ',' + x + ',' + y + ');');
+      compileGlyf(subglyph, js, font);
+      js.push('c.restore();');
+    }
+  } while ((flags &amp; 0x20));
+} else {
+  // simple glyph
+...</pre></li>
     </ul>
 
 
@@ -3688,7 +3925,23 @@ contextPrototype.fillRect = function (aX, aY, aWidth, aHeight) {
 
     setM(this, matrixMultiply(m1, this.m_), false);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+          case 14: // endchar
+            if (stack.length &gt;= 4) {
+var achar = stack.pop();
+var bchar = stack.pop();
+y = stack.pop();
+x = stack.pop();
+js.push('c.save();');
+js.push('c.<span class="apidocCodeKeywordSpan">translate</span>('+ x + ',' + y + ');');
+var gid = lookupCmap(font.cmap, String.fromCharCode(
+  font.glyphNameMap[Encodings.StandardEncoding[achar]]));
+compileCharString(font.glyphs[gid], js, font);
+js.push('c.restore();');
+
+gid = lookupCmap(font.cmap, String.fromCharCode(
+  font.glyphNameMap[Encodings.StandardEncoding[bchar]]));
+...</pre></li>
     </ul>
 
 
@@ -3761,21 +4014,22 @@ contextPrototype.fillRect = function (aX, aY, aWidth, aHeight) {
     return retVal;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    let fs = require('fs'),
-        PDFParser = require("pdf2json");
+	PdfParser.prototype.parseBuffer = function(pdfBuffer) {
+		_startParsingPDF.call(this, pdfBuffer);
+	};
 
-    let pdfParser = new PDFParser();
+	PdfParser.prototype.getRawTextContent = function() { return this.PDFJS.getRawTextContent(); };
+	PdfParser.prototype.getRawTextContentStream = function() { return _createContentStream(this.getRawTextContent()); };
 
-    pdfParser.on("pdfParser_dataError", errData =&gt; console.error(errData.parserError) );
-    pdfParser.on("pdfParser_dataReady", pdfData =&gt; {
-        fs.writeFile("./pdf2json/test/F1040EZ.fields.json", JSON.stringify(pdfParser.<span class="apidocCodeKeywordSpan
-">getAllFieldsTypes</span>()));
-    });
+	PdfParser.prototype.getAllFieldsTypes = function() { return this.PDFJS.<span class="apidocCodeKeywordSpan">getAllFieldsTypes</span>(); };
+	PdfParser.prototype.getAllFieldsTypesStream = function() { return _createContentStream(this.getAllFieldsTypes()); };
 
-    pdfParser.loadPDF("./pdf2json/test/pdf/fd/form/F1040EZ.pdf");
-````
+	PdfParser.prototype.getMergedTextBlocksIfNeeded = function() { return {"formImage": this.PDFJS.getMergedTextBlocksIfNeeded
+()}; };
+	PdfParser.prototype.getMergedTextBlocksStream = function() { return _createContentStream(this.getMergedTextBlocksIfNeeded()); };
 
-Alternatively, you can pipe input and output streams: (requires v1.1.4)
+	PdfParser.prototype.destroy = function() {
+		this.removeAllListeners();
 ...</pre></li>
     </ul>
 
@@ -4294,21 +4548,22 @@ return isInSameLine &amp;&amp; isDistanceSmallerThanASpace;
     return retVal;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-				return !isDup;
-			});
 
-			for (let i = 0; i &lt; page.Texts.length; i++) {
-				let text = page.Texts[i];
+	cls.getFontSize = function(textBlock) {
+		let sId = textBlock.R[0].S;
+		return (sId &lt; 0) ? textBlock.R[0].TS[1] : _kFontStyles[sId][1];
+	};
 
-				if (prevText) {
-					if (PDFFont.areAdjacentBlocks(prevText, text) &amp;&amp; PDFFont.<span class="apidocCodeKeywordSpan">haveSameStyle</span>(
-prevText, text)) {
-						let preT = decodeURIComponent(prevText.R[0].T);
-						let curT = decodeURIComponent(text.R[0].T);
+    cls.areDuplicateBlocks = function(t1, t2) {
+return t1.x == t2.x &amp;&amp; t1.y == t2.y &amp;&amp; t1.R[0].T == t2.R[0].T &amp;&amp; cls.<span class="apidocCodeKeywordSpan
+">haveSameStyle</span>(t1, t2);
+    };
 
-						prevText.R[0].T += text.R[0].T;
-prevText.w += text.w;
-text.merged = true;
+    // private
+    let _setFaceIndex = function() {
+let fontObj = this.fontObj;
+
+this.bold = fontObj.bold;
 ...</pre></li>
     </ul>
 
@@ -4456,57 +4711,6 @@ contextPrototype.strokeText = function(text, x, y, maxWidth) {
     this.fillText(text, x, y, maxWidth);
 };
 ...</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.pdf2json.pdfimage" id="apidoc.module.pdf2json.pdfimage">module pdf2json.pdfimage</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.pdf2json.pdfimage.pdfimage" id="apidoc.element.pdf2json.pdfimage.pdfimage">
-        function <span class="apidocSignatureSpan">pdf2json.</span>pdfimage
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">pdfimage = function () {
-	'use strict';
-
-	let _src = '';
-	let _onload = null;
-
-	this.__defineSetter__("onload", function(val) {
-		_onload = val;
-	});
-
-	this.__defineGetter__("onload", function() {
-		return _onload;
-	});
-
-	this.__defineSetter__("src", function(val) {
-		_src = val;
-		if (_onload) _onload();
-	});
-
-	this.__defineGetter__("src", function() {
-		return _src;
-	});
-
-    this.btoa = function(val) {
-        if (typeof window === 'undefined') {
-            return (new Buffer(val, 'ascii')).toString('base64');
-        }
-        else if (typeof window.btoa === 'function')
-            return window.btoa(val);
-
-        return "";
-    };
-
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
 
@@ -4801,21 +5005,21 @@ R: [{
     return cls.toFixedFloat(viewportX / _pixelXPerGrid);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-this.Fields = [];
-//form elements: radio buttons and check boxes
-this.Boxsets = [];
+    else if (field.fieldType !== 'Ch') { //checkbox, radio button, and link button
+        rect[1] -= 3;
+    }
 
-//public properties
-Object.defineProperty(this, 'width', {
-    get:function () {
-        return PDFUnit.<span class="apidocCodeKeywordSpan">toFormX</span>(this.viewport.width);
-    },
-    enumerable:true
-});
+    height = (height &gt;= kMinHeight) ? height : kMinHeight;
 
-Object.defineProperty(this, 'height', {
-    get:function () {
-        return PDFUnit.toFormY(this.viewport.height);
+    return {
+        x: PDFUnit.<span class="apidocCodeKeywordSpan">toFormX</span>(rect[0]),
+        y: PDFUnit.toFormY(rect[1]),
+        w: PDFUnit.toFormX(rect[2] - rect[0]),
+        h: PDFUnit.toFormY(height)
+    };
+};
+
+let _getFieldBaseData = function(field) {
 ...</pre></li>
     </ul>
 
@@ -4832,20 +5036,21 @@ Object.defineProperty(this, 'height', {
     return cls.toFixedFloat(viewportY / _pixelYPerGrid);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-                return PDFUnit.toFormX(this.viewport.width);
-            },
-            enumerable:true
-        });
+        rect[1] -= 3;
+    }
 
-        Object.defineProperty(this, 'height', {
-            get:function () {
-                return PDFUnit.<span class="apidocCodeKeywordSpan">toFormY</span>(this.viewport.height);
-            },
-            enumerable:true
-        });
+    height = (height &gt;= kMinHeight) ? height : kMinHeight;
+
+    return {
+        x: PDFUnit.toFormX(rect[0]),
+        y: PDFUnit.<span class="apidocCodeKeywordSpan">toFormY</span>(rect[1]),
+        w: PDFUnit.toFormX(rect[2] - rect[0]),
+        h: PDFUnit.toFormY(height)
     };
-    // inherit from event emitter
-	nodeUtil.inherits(cls, nodeEvents.EventEmitter);
+};
+
+let _getFieldBaseData = function(field) {
+    let attributeMask = 0;
 ...</pre></li>
     </ul>
 
@@ -5016,40 +5221,6 @@ this.ptiParser.<span class="apidocCodeKeywordSpan">parseXml</span>(fieldInfoXMLP
     else {
         nodeUtil.p2jinfo("fieldInfo XML loaded.");
     }
-...</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.pdf2json.toString" id="apidoc.module.pdf2json.toString">module pdf2json.toString</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.pdf2json.toString.toString" id="apidoc.element.pdf2json.toString.toString">
-        function <span class="apidocSignatureSpan">pdf2json.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-let abs = m.abs;
-let sqrt = m.sqrt;
-
-// precompute "00" to "FF"
-let dec2hex = [];
-for (let i = 0; i &lt; 16; i++) {
-    for (let j = 0; j &lt; 16; j++) {
-        dec2hex[i * 16 + j] = i.<span class="apidocCodeKeywordSpan">toString</span>(16) + j.toString(16);
-    }
-}
-
-function createMatrixIdentity() {
-    return [
-        [1, 0, 0],
-        [0, 1, 0],
 ...</pre></li>
     </ul>
 
